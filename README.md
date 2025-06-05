@@ -50,27 +50,27 @@ Username: admin
 Password: 123456
 python manage.py runserver
 ```
-##🛡️ How It Works
+## 🛡️ How It Works
 
-- **Scapy listens to all network packets (e.g., using Wi-Fi adapter).
-- **Each packet is analyzed: if packet size > threshold (default: 1500 bytes), it is marked as Suspicious.
-- **Alert is logged in database and optionally emailed to the admin.
-- **All entries appear on the dashboard in real time with control actions.
+- Scapy listens to all network packets (e.g., using Wi-Fi adapter).
+- Each packet is analyzed: if packet size > threshold (default: 1500 bytes), it is marked as Suspicious.
+- Alert is logged in database and optionally emailed to the admin.
+- All entries appear on the dashboard in real time with control actions.
 
-##📤 Export Formats
+## 📤 Export Formats
 
-- **CSV – Tabular alerts
-- **PDF – Styled printable version (using xhtml2pdf)
+- **CSV** – Tabular alerts
+- **PDF** – Styled printable version (using xhtml2pdf)
 
-##💡 Future Enhancements (Ideas)
+## 💡 Future Enhancements (Ideas)
 
-- **Live auto-refresh with AJAX
-- **Add geo-IP location (country/ISP)
-- **Push notifications via Telegram or WhatsApp
-- **Multi-user role-based access
+- Live auto-refresh with AJAX
+- Add geo-IP location (country/ISP)
+- Push notifications via Telegram or WhatsApp
+- Multi-user role-based access
 
 ## 👨‍💻 Developed By
-**Ali Khusroo Bin Sabir
+**Ali Khusroo Bin Sabir**
 - Final Year B.Tech CSE | Cybersecurity Enthusiast
 - 📧 alisabir97570@gmail.com
 - 🔗 LinkedIn | Portfolio
