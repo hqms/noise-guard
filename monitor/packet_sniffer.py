@@ -17,7 +17,7 @@ THRESHOLD = 1500
 def send_email_alert(ip, size, status):
     subject = f"[NoiseGuard] Suspicious Activity from {ip}"
     message = f"Packet size: {size} bytes\nStatus: {status}\nCheck the dashboard for more details."
-    send_mail(subject, message, 'alicerber50@gmail.com', ['admin@noise.com'])
+    # send_mail(subject, message, 'alicerber50@gmail.com', ['admin@noise.com'])
 
 def process_packet(packet):
     if IP in packet:
