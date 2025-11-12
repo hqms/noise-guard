@@ -9,6 +9,8 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from xhtml2pdf import pisa
 import csv
+from rest_framework import viewsets
+from .serializers import AlertSerializer
 
 @login_required
 def dashboard(request):
@@ -97,3 +99,7 @@ def export_pdf(request):
     response['Content-Disposition'] = 'attachment; filename="alerts.pdf"'
     pisa.CreatePDF(html, dest=response)
     return response
+
+class AlertViewSet(viewsets.ModelViewSet):
+    serializer_class = AlertSerializer
+    queryset = Alert.objects.all()

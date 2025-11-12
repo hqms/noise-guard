@@ -3,6 +3,7 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 
+
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('unblock/<int:alert_id>/', views.unblock_alert, name='unblock_alert'),

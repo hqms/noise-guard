@@ -2,13 +2,13 @@ import os
 import django
 import sys
 from scapy.all import sniff, IP
+import requests
 
 # Set up Django environment
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "noiseguard.settings")
 django.setup()
 
-from monitor.models import Alert
 from django.core.mail import send_mail
 
 # Threshold for packet size (you can adjust this)
@@ -26,15 +26,28 @@ def process_packet(packet):
 
         status = "Suspicious" if packet_len > THRESHOLD else "Safe"
 
-        # Create and save alert
-        alert = Alert.objects.create(
-            ip_address=ip_src,
-            packet_size=packet_len,
-            status=status
-        )
+        # # Create and save alert
+        # alert = Alert.objects.create(
+        #     ip_address=ip_src,
+        #     packet_size=packet_len,
+        #     status=status
+        # )
+        data = {
+                "ip_address": str(ip_src),
+                "ip_destination": str(ip_src),
+                "packet_size": packet_len,
+                "client": 1,
+                "status": str(status)
+                        }
+        r = requests.post('http://localhost:8000/api/alert/?format=json', 
+                         json=data,
+                                 headers={'content-type': 'application/json'}
+                                 )
+        print(r.text)
 
-        if alert.status == "Suspicious":  # You can change condition to "Blocked" if needed
-            send_email_alert(alert.ip_address, alert.packet_size, alert.status)
+        if status == "Suspicious":  # You can change condition to "Blocked" if needed
+            pass
+            #send_email_alert(alert.ip_address, alert.packet_size, alert.status)
 
         print(f"[+] Logged alert: {ip_src} | Size: {packet_len} | Status: {status}")
 
