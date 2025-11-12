@@ -7,6 +7,7 @@ charset-normalizer==3.4.4
 cryptography==46.0.3
 cssselect2==0.8.0
 Django==5.2.7
+django-jazzmin==3.0.1
 freetype-py==2.5.1
 html5lib==1.1
 idna==3.11
@@ -18,6 +19,7 @@ pycparser==2.23
 pyHanko==0.31.0
 pyhanko-certvalidator==0.29.0
 pypdf==6.1.1
+PyPDF2==3.0.1
 python-bidi==0.6.6
 PyYAML==6.0.3
 reportlab==4.4.4

@@ -1,7 +1,19 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Alert
+from .models import Alert,Client
 
-admin.site.register(Alert)
+@admin.register(Client)
+class clientAdmin(admin.ModelAdmin):
+    list_display = ("name","description")
+    list_filter = ("name",)
+    search_fields = ("name","description")
 
+@admin.register(Alert)
+class AlertAdmin(admin.ModelAdmin):
+    list_per_page = 10
+
+admin.site.site_header = "nganu"
+
+#admin.site.register(Alert)
+# admin.site.register(Client)
