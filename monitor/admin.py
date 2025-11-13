@@ -12,6 +12,8 @@ class clientAdmin(admin.ModelAdmin):
 @admin.register(Alert)
 class AlertAdmin(admin.ModelAdmin):
     list_per_page = 10
+    list_filter = ("status",)
+    list_display = ("ip_address","ip_destination","packet_size","status")
 
 admin.site.site_header = "nganu"
 

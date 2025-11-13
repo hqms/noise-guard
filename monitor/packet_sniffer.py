@@ -1,13 +1,7 @@
 import os
-import django
 import sys
 from scapy.all import sniff, IP
 import requests
-
-# Set up Django environment
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "noiseguard.settings")
-django.setup()
 
 from django.core.mail import send_mail
 
@@ -24,14 +18,12 @@ def process_packet(packet):
         ip_src = packet[IP].src
         packet_len = len(packet)
 
-        status = "Suspicious" if packet_len > THRESHOLD else "Safe"
+        if packet_len > THRESHOLD:
+            status = "Suspicious" 
+        else:
+            status = "Safe"
 
-        # # Create and save alert
-        # alert = Alert.objects.create(
-        #     ip_address=ip_src,
-        #     packet_size=packet_len,
-        #     status=status
-        # )
+        
         data = {
                 "ip_address": str(ip_src),
                 "ip_destination": str(ip_src),
